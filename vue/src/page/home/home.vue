@@ -5,12 +5,17 @@
     </div>
     <linkList></linkList>
     <Gray></Gray>
+    <!-- 职坐标快报 -->
     <Bulletin :bulletin="bulletin"></Bulletin>
     <Gray></Gray>
     <!-- 加油站 -->
     <CheerStation :cheer="cheer"></CheerStation>
     <Gray></Gray>
+    <!-- 视频讲堂 -->
+    <Leature :lecture="lectureArr"></Leature>
+    <Gray></Gray>
     <Company :company="company" v-if="company.length > 0"></Company>
+    <!-- 工作列表 -->
     <JobList :jobArr="jobArr"></JobList>
     <Gray></Gray>
     <!-- 文章列表 -->
@@ -32,6 +37,7 @@
   import Article from '../../components/article/article'
   import LoadMore from '../../components/common/loadMore'
   import listTitle from '../../components/common/listTitle'
+  import Leature from '../../components/lecture/lecture'
 
   export default {
     data() {
@@ -118,19 +124,19 @@
         this.$forceUpdate()
         this.$get(this.$store.state.domain + '/api/video/news/', {page: page ?  page : this.newsPage} ).then((res) => {
           this.allLoaded = true
-          if (res.data.code == 200) {
+          if (res.code == 200) {
             this.swBl = true
-            this.pages = res.data.data.pages
+            this.pages = res.data.pages
             if (page) {
-              this.articles = this.articles.concat(res.data.data.dataList)
+              this.articles = this.articles.concat(res.data.dataList)
               this.windowScroll ()
-              if(page === res.data.data.pages) {
+              if(page === res.data.pages) {
                 this.allLoaded = true
                 this.loadTitle = '加载完成'
               }
               this.$refs.loadmore.onBottomLoaded()
             }else {
-              this.articles = res.data.data.dataList
+              this.articles = res.data.dataList
             }
           }
         }).catch((err) => {
@@ -157,7 +163,7 @@
       }
     },
     components: {
-      Banner, linkList, Bulletin, CheerStation, Company, JobList, Article, LoadMore, listTitle
+      Banner, linkList, Bulletin, CheerStation, Company, JobList, Article, LoadMore, listTitle, Leature
     }
   }
 </script>
@@ -178,5 +184,9 @@
         display: block;
       }
     }
+  }
+  .mint-loadmore {
+    width: 7.5rem;
+    background: #fff;
   }
 </style>

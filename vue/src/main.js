@@ -6,15 +6,24 @@ import router from './router'
 import store from './store/index'
 import {get, post} from './config/base'
 import Gray from './componentjs/gray.js'
+var VueCookie = require('vue-cookie')
+// 引过滤器
+import  filters from './filters/index'
+Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
+
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css'
+Vue.use(Mint)
+
+Vue.use(VueCookie)
 Vue.use(Gray)
-Vue.use(Mint);
 Vue.prototype.$post = post
 Vue.prototype.$get = get
+
+
 Vue.config.productionTip = false
 
-
+require('swiper/css/swiper.min.css')
 require('./assets/iconfont/iconfont.css')
 require ('./assets/css/common.css')
 require ('./config/rem.js')

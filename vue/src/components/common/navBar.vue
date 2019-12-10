@@ -4,12 +4,12 @@
       <div class="dis-flex-bt">
         <div class="navLeft item">
           <!-- 返回按钮 -->
-          <div @click="goBack" class="goBack"  v-if = "pathName === 'search' || pathName === 'videoPlay' ||  pathName === 'forum' || pathName === 'myclass' || $store.state.footUser">
+          <div @click="goBack" class="goBack"  v-if = "pathName === 'search' || pathName === 'videoPlay' ||  pathName === 'video' || pathName === 'myclass' || $store.state.footUser">
             <img src="http://static.zhizuobiao.com/mobile/css/images/m-ht-back.png" alt="">
           </div>
           <!-- logo -->
-          <div class="logo" v-show="pathName === 'found'">
-            <a :href="$store.state.domain">
+          <div class="logo" v-show="pathName === 'home'">
+            <a href="javascript:;">
               <img src="../../assets/img/minilogo.png" alt="">
             </a>
           </div>
@@ -19,7 +19,7 @@
               <a :href="$store.state.domain">首页</a>
             </dd>
             <dd>
-              <a :href="$store.state.domain + '/video/'">讲堂</a>
+              <a :href="'/video/'">讲堂</a>
             </dd>
             <dd>视频</dd>
           </dl>
@@ -28,20 +28,20 @@
           <em>{{$store.state.navTitle}}</em>
         </div>
         <div class="navRight item">
-          <span v-show="pathName == 'forum' || pathName == 'videoList'">
-            <span class="menuImg" @click.stop="menuBl = !menuBl">
-              <img class="menuicon" v-if="pathName === 'forum'" src="../../assets/img/menu_nav_02.png" alt="">
-              <img class="menuicon" v-else src="../../assets/img/menu_nav_01.png" alt="">
+          <span v-show="pathName == 'video' || pathName == 'videoList'">
+            <span class="menuImg iconfont icon-caidan" @click.stop="menuBl = !menuBl">
+              <!-- <img class="menuicon" v-if="pathName === 'forum'" src="../../assets/img/menu_nav_02.png" alt="">
+              <img class="menuicon" v-else src="../../assets/img/menu_nav_01.png" alt=""> -->
             </span>
           </span>
           <!--头像-->
-          <a :href="isLogin ? $store.state.domain + '/my/' : $store.state.domain + '/user/'" v-if="pathName == 'search'">
+          <a :href="isLogin ? '/my/' : '/user/'" v-if="pathName == 'search'">
             <img v-if="isLogin" class="myicon" src="../../assets/img/my1.jpg" alt="">
             <img v-else class="myicon" src="../../assets/img/my.png" alt="">
           </a>
-          <a :href="$store.state.domain + '/find/'" v-show="pathName === 'found'">
+          <router-link  v-show="pathName === 'home'" :to="{name: 'find'}">
             <img class="searchIcon" src="../../assets/img/search.png" alt="">
-          </a>
+          </router-link>
         </div>
       </div>
     </div>

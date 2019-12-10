@@ -99,6 +99,7 @@ export default {
       img {
         height: 100%;
         width: 100%;
+        display: block;
       }
     }
     .articleList {
@@ -140,6 +141,9 @@ export default {
           }
         }
       }
+    }
+    .mint-loadmore-bottom {
+      text-align: center;
     }
   }
 </style>

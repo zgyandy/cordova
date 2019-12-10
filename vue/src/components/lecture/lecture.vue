@@ -4,7 +4,7 @@
     <dl class="title dis-flex-bt">
       <dt>视频讲堂</dt>
       <dd>
-        <a :href="$store.state.domain + '/video/total-a1/'" class="gray">微课</a>
+        <a href='/video/total-a1/' class="gray">微课</a>
         <span class="line"></span>
         <a :href="$store.state.domain + '/video/total-a2/'" class="gray">公开课</a>
       </dd>
@@ -100,6 +100,7 @@ export default {
           height: .77rem;
           overflow: hidden;
           padding: .2rem .2rem 0;
+          line-height: 0.38rem;
           font-size: .28rem;
           margin-bottom: .2rem;
         }

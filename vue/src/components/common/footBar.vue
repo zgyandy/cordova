@@ -4,36 +4,38 @@
       <ul>
         <li>
           <router-link :to="{name: 'home'}">
-            <img class="foundIcon" v-show="pathName == 'found'" src="../../assets/img/found1.png" alt="发现">
-            <img class="foundIcon" v-show="pathName !== 'found'" src="../../assets/img/found.png" alt="发现">
-            <p :class="{redColor : pathName == 'found'}">发现</p>
+            <img class="foundIcon" v-show="pathName == 'home'" src="../../assets/img/found1.png" alt="发现">
+            <img class="foundIcon" v-show="pathName !== 'home'" src="../../assets/img/found.png" alt="发现">
+            <p :class="{redColor : pathName == 'home'}">发现</p>
           </router-link>
         </li>
         <li>
           <router-link :to="{name: 'video'}">
-            <img class="forumIcon" v-show="pathName === 'forum'" src="../../assets/img/video1.png" alt="讲堂">
-            <img class="forumIcon" v-show="pathName !== 'forum'" src="../../assets/img/video.png" alt="讲堂">
-            <p :class="{redColor : pathName == 'forum'}">讲堂</p>
+            <img class="forumIcon" v-if="pathName.match(/^video/)" src="../../assets/img/video1.png" alt="讲堂">
+            <img class="forumIcon" v-else src="../../assets/img/video.png" alt="讲堂">
+            <p :class="{redColor : pathName.match(/^video/)}">讲堂</p>
           </router-link>
         </li>
         <li>
-          <a :href="$store.state.domain + '/mall/'">
-            <img class="mallIcon" src="../../assets/img/mall.png" alt="商城">
-            <p>商城</p>
-          </a>
+          <router-link :to="{name: 'knowledge'}">
+            <img class="knowledgeIcon" v-if="pathName.match(/^knowledge/)" src="../../assets/img/knowledge1.png" alt="知识">
+            <img class="knowledgeIcon" v-else src="../../assets/img/knowledge.png" alt="知识">
+            <p :class="{redColor : pathName.match(/^knowldege/)}">知识</p>
+          </router-link>
         </li>
         <li>
-          <a :href="$store.state.domain + '/job/'">
-            <img class="konwledgeIcon" src="../../assets/img/jobGray.png" alt="就业">
-            <p>就业</p>
-          </a>
+          <router-link :to="{name: 'job'}">
+            <img class="jobIcon" v-if="pathName.match(/^job/)" src="../../assets/img/jobRed.png" alt="就业">
+            <img class="jobIcon" v-else src="../../assets/img/jobGray.png" alt="就业">
+            <p :class="{redColor : pathName.match(/^job/)}">就业</p>
+          </router-link>
         </li>
         <li>
-          <a :href="$store.state.domain + '/my/'">
-            <img v-if="$store.state.footUser" class="myIcon" src="../../assets/img/my1.png" alt="我的">
+          <router-link :to="{name: 'my'}">
+            <img v-if="pathName.match(/^my/)" class="myIcon" src="../../assets/img/my1.png" alt="我的">
             <img v-else class="myIcon" src="../../assets/img/my.png" alt="我的">
-            <p>我的</p>
-          </a>
+            <p :class="{redColor : pathName.match(/^my/)}">我的</p>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -42,7 +44,11 @@
 
 <script>
 export default {
-  props: ["pathName"]
+  props: {
+    pathName: {
+      default: ''
+    }
+  }
 };
 </script>
 
@@ -78,28 +84,33 @@ export default {
         a {
           color: #000;
         }
-        .foundIcon {
-          width: 0.49rem;
-          height: 0.36rem;
-        }
-        .forumIcon {
-          width: 0.39rem;
-          height: 0.39rem;
-        }
-        .mallIcon {
-          width: 0.38rem;
-          height: 0.38rem;
-        }
-        .konwledgeIcon {
-          width: 0.36rem;
-          height: 0.38rem;
-        }
-        .myIcon {
-          width: 0.4rem;
-          height: 0.38rem;
-        }
+
       }
     }
+  }
+  .foundIcon {
+    width: 0.49rem;
+    height: 0.36rem;
+  }
+  .forumIcon {
+    width: 0.39rem;
+    height: 0.39rem;
+  }
+  .mallIcon {
+    width: 0.38rem;
+    height: 0.38rem;
+  }
+  .knowledgeIcon {
+    width: 0.36rem;
+    height: 0.38rem;
+  }
+  .myIcon {
+    width: 0.4rem;
+    height: 0.38rem;
+  }
+  .jobIcon {
+    width: 0.4rem;
+    height: 0.38rem;
   }
 }
 </style>

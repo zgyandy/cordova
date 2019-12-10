@@ -26,4 +26,16 @@ export default {
   .mint-swipe-indicators {
     bottom: .23rem;
   }
+  .mint-swipe-indicator {
+    width: 0.17rem;
+    height: 0.17rem;
+    border-radius: 100%;
+    background: #fff;
+    margin: 0 0.1rem;
+    opacity: 1;
+  }
+  .mint-swipe-indicator.is-active {
+    background: #e10030;
+    opacity: 1;
+  }
 </style>

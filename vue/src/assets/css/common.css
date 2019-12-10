@@ -1,4 +1,12 @@
 @charset "utf-8";
+@font-face{
+  font-family: NotoSansHans-Regular;
+  src: url("../font/NotoSansHans-Regular.ttf");
+}
+@font-face {
+  font-family: ArialBold;
+  src: url('../font/Arial-BoldMT.otf');
+}
 html,body,ul,li,ol,dl,dd,dt,table,tbody,thead,tr,th,td,p,h1,h2,h3,h4,h5,h6,form,img,button,select,option,textarea {
   margin: 0;
   padding: 0;
@@ -32,7 +40,7 @@ ul,ol {
 
 body {
   font-size: 0.24rem;
-  font-family: "Source Han Sans SC", "黑体", "苹方", "Noto Sans CJK SC Medium", "WenQuanYi Micro Hei" , Arial, Helvetica, sans-serif;
+  font-family: NotoSansHans-Regular;
   background: #f2f2f2;
 }
 a {
@@ -117,5 +125,5 @@ em {
   display: none;  /* 隐藏默认播放按钮 */
 }
 .iconfont {
-  font-size: 0.3rem;
+  font-size: 0.4rem;
 }

@@ -1,6 +1,6 @@
-# y
+# 海同APP
 
-> y
+> 海同app使用cordova开发，设置webpack文件，将打包后的文件放到www文件夹中。使用rem布局实现多端不同分辨率兼容。
 
 ## Build Setup
 
@@ -18,4 +18,7 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 用的技术
+vue vuex axios vue-router 等
+
+
