@@ -20,7 +20,7 @@
           <router-link :to="{name: 'knowledge'}">
             <img class="knowledgeIcon" v-if="pathName.match(/^knowledge/)" src="../../assets/img/knowledge1.png" alt="知识">
             <img class="knowledgeIcon" v-else src="../../assets/img/knowledge.png" alt="知识">
-            <p :class="{redColor : pathName.match(/^knowldege/)}">知识</p>
+            <p :class="{redColor : pathName.match(/^knowledge/)}">知识</p>
           </router-link>
         </li>
         <li>

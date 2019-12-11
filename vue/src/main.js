@@ -27,7 +27,29 @@ require('swiper/css/swiper.min.css')
 require('./assets/iconfont/iconfont.css')
 require ('./assets/css/common.css')
 require ('./config/rem.js')
+
 /* eslint-disable no-new */
+
+var app = {
+  // Application Constructor
+  initialize: function() {
+      document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+  },
+
+  // deviceready Event Handler
+  //
+  // Bind any cordova events here. Common events are:
+  // 'pause', 'resume', etc.
+  onDeviceReady: function() {
+    this.receivedEvent('deviceready');
+  },
+  receivedEvent: function(id) {
+
+  }
+};
+
+app.initialize();
+
 new Vue({
   el: '#app',
   router,

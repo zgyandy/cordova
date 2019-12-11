@@ -69,7 +69,7 @@ export default {
       listTitle: {
         title: '精品文章',
         arr: [
-          {url: '/knowledge/', key: '更多>'}
+          {key: '更多>', name: 'knowledge'}
         ]
       }
     }

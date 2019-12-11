@@ -1,7 +1,7 @@
 <template>
   <div class="loadMore">
     <p class="grayColor">
-      <span>{{title}}&nbsp;&nbsp;<span class="iconfont icon-xia"></span></span>
+      <span>{{title}}&nbsp;&nbsp;<span class="iconfont icon-test2"></span></span>
       </p>
   </div>
 </template>

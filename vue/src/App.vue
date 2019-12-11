@@ -25,11 +25,6 @@ export default {
       // 滚动到顶部
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
-      if (/^search/.test(to.name)){
-        this.$store.commit('footBl', false)
-      }else {
-        this.$store.commit('footBl', true)
-      }
     }
   },
 }

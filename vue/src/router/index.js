@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import knowldegePage from './knowledge.js'
+import myPage from './my.js'
 Vue.use(Router)
 
 export default new Router({
@@ -11,28 +13,50 @@ export default new Router({
     },
     {
       path: '/video',
-      name: 'video',
-      component: resolve => require(['../page/video/video.vue'], resolve)
-    },
-    {
-      path: '/videoList',
-      name: 'videoList',
-      component: resolve => require(['../page/video/videoList.vue'], resolve)
+      component: resolve => require(['../page/video/index.vue'], resolve),
+      children: [
+        {
+          path: '',
+          name: 'video',
+          component: resolve => require(['../page/video/video.vue'], resolve)
+        },
+        {
+          path: 'list/:subject/:difficulty/:sort',
+          name: 'videoList',
+          component: resolve => require(['../page/video/videoList.vue'], resolve)
+        }
+      ]
     },
     {
       path: '/knowledge',
-      name: 'knowledge',
-      component: resolve => require(['../page/knowledge/knowledge.vue'], resolve)
+      component: resolve => require(['../page/knowledge/index.vue'], resolve),
+      children: knowldegePage
     },
     {
       path: '/job',
-      name: 'job',
-      component: resolve => require(['../page/job/job.vue'],resolve)
+      component: resolve => require(['../page/job/index.vue'], resolve),
+      children: [
+        {
+          path: '',
+          name: 'job',
+          component: resolve => require(['../page/job/job.vue'], resolve),
+        },
+        {
+          path: 'list',
+          name: 'jobList',
+          component: resolve => require(['../page/job/list.vue'], resolve)
+        },
+        {
+          path: 'detail/:id',
+          name: 'jobDetail',
+          component: resolve => require(['../page/job/detail.vue'], resolve)
+        }
+      ]
     },
     {
       path: '/my',
-      name: 'my',
-      component: resolve => require(['../page/my/my.vue'], resolve)
+      component: resolve => require(['../page/my/index.vue'], resolve),
+      children: myPage
     },
     {
       path: '/find',

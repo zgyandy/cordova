@@ -32,7 +32,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 				listTitle: {
 					title: '就业岗位',
 					arr: [
-						{url: '/job/job/', msg: '更多职位'}
+						{name: 'jobList', msg: '更多职位'}
 					]
 				},
 				timer: '',

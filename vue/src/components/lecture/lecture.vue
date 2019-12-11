@@ -1,24 +1,17 @@
 <template>
 
   <div class="lecture">
-    <dl class="title dis-flex-bt">
-      <dt>视频讲堂</dt>
-      <dd>
-        <a href='/video/total-a1/' class="gray">微课</a>
-        <span class="line"></span>
-        <a :href="$store.state.domain + '/video/total-a2/'" class="gray">公开课</a>
-      </dd>
-    </dl>
+    <ListTitle v-if="!listTitle.hide" :listTitle="listTitle"></ListTitle>
     <ul class="leatureList dis-flex-wrap">
       <li v-for="(item, key) in lecture" :key="key" @click.stop="toPlay(item.id)" v-show="key < 6">
           <div class="imgBox">
-            <img v-lazy="item.picture" :alt="item.title">
+            <img v-lazy="item.picture.indexOf('//iotekimg.zhizuobiao.com') != -1 ? item.picture :  $store.state.imgBaseUrl + item.picture" :alt="item.title">
             <div class="dis-flex-bt">
-              <p>{{item.rangeDataName}}</p>
-              <p>{{item.formatDuration}}</p>
+              <p>{{item.rangeDataName ? item.rangeDataName : item.rangeName}}</p>
+              <p>{{item.formatDuration ? item.formatDuration : item.duration}}</p>
             </div>
           </div>
-          <p class="explain">{{item.title}}</p>
+          <p class="explain">{{item.title ? item.title : item.videoAlias}}</p>
           <dl class="videoMsg dis-flex-bt grayColor">
             <dt>{{item.teacherName}}</dt>
             <dd>
@@ -33,12 +26,49 @@
 </template>
 
 <script>
+import ListTitle from  '../common/listTitle'
 export default {
-  props: ['lecture'],
+  props: {
+    lecture: {
+      default: () => new Array()
+    },
+    listTitle: {
+      default: () => {
+        return {
+          title: '视频讲堂',
+          arr: [
+            {
+              name: 'videoList',
+              msg: '微课',
+              params: {
+                subject: 1,
+                difficulty: 0,
+                sort: 0
+              }
+            },
+            {
+              url: 'videoList',
+              msg: '公开课',
+              params: {
+                subject: 2,
+                difficulty: 0,
+                sort: 0
+              }
+            }
+          ],
+          tip: '',
+          hide: false
+        }
+      }
+    }
+  },
   methods: {
     toPlay (id) {
       location.assign('/video/play-' + id + '.htm')
     }
+  },
+  components: {
+    ListTitle
   }
 }
 </script>
@@ -47,26 +77,26 @@ export default {
   .lecture {
     width: 7.5rem;
     background: #eee;
-    .title {
-      height: .96rem;
-      background: #fff;
-      padding: 0 .2rem;
-      font-size: .28rem;
-      dt {
-        height: .9rem;
-        box-shadow: 0 .04rem #e10030;
-        font-size: .36rem;
-        line-height: .9rem;
-      }
-      .line {
-        height: .3rem;
-        &::after {
-          content: "|";
-          color: #999;
-          margin:0 .08rem;
-        }
-      }
-    }
+    // .title {
+    //   height: .96rem;
+    //   background: #fff;
+    //   padding: 0 .2rem;
+    //   font-size: .28rem;
+    //   dt {
+    //     height: .9rem;
+    //     box-shadow: 0 .04rem #e10030;
+    //     font-size: .36rem;
+    //     line-height: .9rem;
+    //   }
+    //   .line {
+    //     height: .3rem;
+    //     &::after {
+    //       content: "|";
+    //       color: #999;
+    //       margin:0 .08rem;
+    //     }
+    //   }
+    // }
     .leatureList {
       padding: 0 .2rem;
       padding-top: .3rem;

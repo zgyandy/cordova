@@ -41,21 +41,21 @@
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-  }
-  .fixedLeft {
-    position: fixed;
-    left: 0;
-    top: 50%;
     transform: translateX(-50%);
     -o-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
+  }
+  .fixedLeft {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
   }
   .fixedBottom {
     position: fixed;
@@ -92,4 +92,10 @@
     display: flex;
     display: -webkit-flex;
   }
+}
+.animationM (@name; @time: 3s) {
+  animation: @name @time linear infinite;
+  -o-animation: @name @time linear infinite;
+  -moz-animation: @name @time linear infinite;
+  -webkit-animation: @name @time linear infinite;
 }

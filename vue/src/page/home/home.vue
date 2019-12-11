@@ -63,11 +63,13 @@
           arr: [
             {
               msg: '名师',
-              url: this.$store.state.domain + '/blog/'
+              url: '/blog/',
+              name: 'knowledgeBlog'
             },
             {
               msg: '热点',
-              url: this.$store.state.domain + '/news/'
+              url: '/news/',
+              name: 'knowledgeNews'
             }
           ]
         }

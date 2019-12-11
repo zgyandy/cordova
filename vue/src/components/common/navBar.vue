@@ -4,8 +4,8 @@
       <div class="dis-flex-bt">
         <div class="navLeft item">
           <!-- 返回按钮 -->
-          <div @click="goBack" class="goBack"  v-if = "pathName === 'search' || pathName === 'videoPlay' ||  pathName === 'video' || pathName === 'myclass' || $store.state.footUser">
-            <img src="http://static.zhizuobiao.com/mobile/css/images/m-ht-back.png" alt="">
+          <div @click="goBack" class="goBack"  v-if = "pathName === 'find' || pathName === 'videoPlay' ||  pathName === 'video' || pathName === 'myclass' || $store.state.footUser">
+            <img src="../../assets/img/back.png" alt="">
           </div>
           <!-- logo -->
           <div class="logo" v-show="pathName === 'home'">
@@ -16,26 +16,23 @@
           <!-- 面包屑 -->
           <dl v-if="pathName === 'videoList'" class="dis-flex crumbsList">
             <dd> 
-              <a :href="$store.state.domain">首页</a>
+              <router-link :to="{name: 'home'}">首页</router-link>
             </dd>
             <dd>
-              <a :href="'/video/'">讲堂</a>
+              <router-link :to="{name: 'video'}">讲堂</router-link>
             </dd>
             <dd>视频</dd>
           </dl>
         </div>
-        <div class="navMiddle item threePoint">
+        <div class="navMiddle item threePoint" v-show="$store.state.navTitle">
           <em>{{$store.state.navTitle}}</em>
         </div>
         <div class="navRight item">
           <span v-show="pathName == 'video' || pathName == 'videoList'">
-            <span class="menuImg iconfont icon-caidan" @click.stop="menuBl = !menuBl">
-              <!-- <img class="menuicon" v-if="pathName === 'forum'" src="../../assets/img/menu_nav_02.png" alt="">
-              <img class="menuicon" v-else src="../../assets/img/menu_nav_01.png" alt=""> -->
-            </span>
+            <span class="menuImg iconfont icon-caidan" :class="{redColor: menuBl}"  @click.stop="menuBl = !menuBl"></span>
           </span>
           <!--头像-->
-          <a :href="isLogin ? '/my/' : '/user/'" v-if="pathName == 'search'">
+          <a :href="isLogin ? '/my/' : '/user/'" v-if="pathName == 'find'">
             <img v-if="isLogin" class="myicon" src="../../assets/img/my1.jpg" alt="">
             <img v-else class="myicon" src="../../assets/img/my.png" alt="">
           </a>
@@ -104,7 +101,7 @@ export default {
   },
   methods: {
     goBack () {
-      history.back(-1)
+      history.go(-1)
     },
     select(cartype){
         this.cards = cartype;
@@ -209,6 +206,7 @@ export default {
           height: 0.46rem;
         }
         .menuImg {
+          font-size: 0.5rem;
           display: inline-block;
         }
         .menuicon {

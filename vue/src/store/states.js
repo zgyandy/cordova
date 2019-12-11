@@ -2,7 +2,7 @@ export default {
   navBl: true,
   footBl: true,
   footUser: false,
-  imgBaseUrl: 'http://iotekimg.zhizuobiao.com',
+  imgBaseUrl: '//iotekimg.zhizuobiao.com',
   domain: '',
   vipUrl: 'http://www.zhizuobiao.com/payment/checkVip',
   navTitle: '职坐标',
