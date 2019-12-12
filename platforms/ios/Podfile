@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'HelloCordova' do
-	project 'HelloCordova.xcodeproj'
+target '职坐标' do
+	project '职坐标.xcodeproj'
 
 end
