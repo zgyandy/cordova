@@ -16,6 +16,11 @@ export default {
       pathName: ''
     }
   },
+  mounted() {
+    document.addEventListener("backbutton", function () {
+      alert('backg button')
+    }, false)
+  },
   components: {
     FootBar, NavBar
   },

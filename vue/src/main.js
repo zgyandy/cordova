@@ -42,6 +42,11 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent('deviceready');
+    Vue.prototype.getPicture = navigator.camera.getPicture
+    Vue.prototype.testFn = fn
+    function fn () {
+      console.log('onDeviceReady')
+    }
   },
   receivedEvent: function(id) {
 

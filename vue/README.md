@@ -8,7 +8,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:9999
 npm run dev
 
 # build for production with minification
@@ -19,6 +19,6 @@ npm run build --report
 ```
 
 ## 用的技术
-vue vuex axios vue-router 等
+vue vuex axios vue-router less 等
 
 

@@ -1,0 +1,10 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "职坐标",
+  "short_name": "职坐标",
+  "version": "com.zhizuobiao.m",
+  "description": "职坐标app",
+  "icons": [],
+  "start_url": "index.html"
+}
