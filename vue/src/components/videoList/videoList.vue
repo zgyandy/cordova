@@ -47,8 +47,8 @@ export default {
   },
   methods: {
     toPlay (id) {
-      // this.$router.push({name: 'videoPlay', params: {id: id}})
-      location.assign('/video/play-' + id + '.htm')
+      this.$router.push({name: 'videoPlay', params: {id: id}})
+      // location.assign('/video/play-' + id + '.htm')
     }
   },
   components: {
@@ -92,8 +92,8 @@ export default {
       height: .77rem;
       overflow: hidden;
       padding: .2rem .2rem 0;
+      line-height: 0.38rem;
       font-size: .28rem;
-      color: #333;
       margin-bottom: .2rem;
     }
     .videoMsg {

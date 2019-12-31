@@ -32,10 +32,10 @@
             <span class="menuImg iconfont icon-caidan" :class="{redColor: menuBl}"  @click.stop="menuBl = !menuBl"></span>
           </span>
           <!--头像-->
-          <a :href="isLogin ? '/my/' : '/user/'" v-if="pathName == 'find'">
-            <img v-if="isLogin" class="myicon" src="../../assets/img/my1.jpg" alt="">
+          <router-link :to="{name: 'my'}" v-if="pathName == 'find'">
+            <img v-if="isLogin" class="myicon"  src="../../assets/img/my1.jpg" alt="">
             <img v-else class="myicon" src="../../assets/img/my.png" alt="">
-          </a>
+          </router-link>
           <router-link  v-show="pathName === 'home'" :to="{name: 'find'}">
             <img class="searchIcon" src="../../assets/img/search.png" alt="">
           </router-link>
@@ -52,22 +52,22 @@
           </span>
       </div>
       <ul class="menuList dis-flex-wrap" @click.stop="">
-         <li @click="select('职坐标讲堂')" :class="cards=='职坐标讲堂'?'active':'list'" class="list">
-           <a :href="$store.state.domain">职坐标讲堂</a>
+         <li @click="select('职坐标讲堂')" :class="pathName == 'video' ? 'active' : 'list' " class="list">
+           <router-link :to="{name: 'video'}">职坐标讲堂</router-link>
          </li>
-         <li @click="select('视频讲堂')" :class="cards=='视频讲坛'?'active':'list'" class="list">
-           <a :href="$store.state.domain+ '/video/total/'">视频讲堂</a>
+         <li @click="select('视频讲堂')" :class="pathName == 'videoList'?'active':'list'" class="list">
+           <router-link :to="{name: 'videoList', params: {sort: 0, difficulty: 0, subject: 0}}">视频讲堂</router-link>
          </li>
-          <li @click="select('精品课程')" :class="cards=='精品课程'?'active':'list'" class="list">
+          <!-- <li @click="select('精品课程')" :class="cards=='精品课程'?'active':'list'" class="list">
            <a href="/mall/course/">精品课程</a>
+         </li> -->
+          <li @click="select('IT知识库')" :class="pathName=='knowledge'?'active':'list'" class="list">
+            <router-link :to="{name: 'knowledge'}">IT知识库</router-link>
          </li>
-          <li @click="select('IT知识库')" :class="cards=='IT知识库'?'active':'list'" class="list">
-           <a href="/knowledge/">IT知识库</a>
+          <li @click="select('名师指导')" :class="pathName=='knowledgeBlog'?'active':'list'" class="list">
+            <router-link :to="{name: 'knowledgeBlog'}">名师指导</router-link>
          </li>
-          <li @click="select('名师指导')" :class="cards=='名师指导'?'active':'list'" class="list">
-           <a href="/blog/">名师指导</a>
-         </li>
-          <li @click="select('人气拼团')" :class="cards=='人气拼团'?'active':'list'" class="list">
+          <!-- <li @click="select('人气拼团')" :class="cards=='人气拼团'?'active':'list'" class="list">
               <a href="/group/">人气拼团</a>
           </li>
           <li @click="select('钜惠抢购')" :class="cards=='钜惠抢购'?'active':'list'" class="list">
@@ -75,7 +75,7 @@
           </li>
           <li @click="select('超值砍价')" :class="cards=='超值砍价'?'active':'list'" class="list">
               <a href="/bargain/">超值砍价</a>
-          </li>
+          </li> -->
       </ul>
     </div>
   </div>
@@ -252,7 +252,7 @@ export default {
       .menuList {
         padding: 0 .2rem;
         background: #fff;
-        height: 1.6rem;
+        // height: 1.6rem;
         padding-bottom: .25rem;
         li.list {
           height: .6rem;

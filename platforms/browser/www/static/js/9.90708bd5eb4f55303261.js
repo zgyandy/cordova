@@ -1,1 +1,0 @@
-webpackJsonp([9],{LBX9:function(e,n){},bUIg:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("\n  knowledge page\n")])},staticRenderFns:[]};var a=t("VU/8")({},r,!1,function(e){t("LBX9")},"data-v-2ee1ff34",null);n.default=a.exports}});

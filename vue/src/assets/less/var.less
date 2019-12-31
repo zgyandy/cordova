@@ -5,97 +5,148 @@
 @blue28: #2879e7;
 @green01: #01aa51;
 @orangeff: #ff720b;
-// 盒模型  (名称空间)
-.boxModel () {
-  .borderBox {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+// 盒模型
+.boxModel(@box: border-box) {
+  box-sizing: @box;
+  -moz-box-sizing: @box;
+  -webkit-box-sizing: @box;
+}
+// 不适用设置多种shadow样式
+.boxShadow (@x: 0; @y: 0; @blur: 0; @spread: 0; @color: #000;) when(iscolor(@color)) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+// fixed
+.fixed (@dir: center) {
+  position: fixed;
+  & when (@dir = center) {
+    left: 50%;
+    top: 50%;
+    .transform(-50%, -50%);
   }
-  .contentBox {
-    box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
+  & when (@dir = left) , (@dir = right) {
+    & when (@dir = left) {
+      left: 0;
+    }
+    & when (@dir = right) {
+      right: 0;
+    }
+    top: 50%;
+    .transform(0, -50%);
+  }
+  & when (@dir = bottom), (@dir = top) {
+    & when (@dir = bottom) {
+      bottom: 0;
+    }
+    & when (@dir = top) {
+      top: 0;
+    }
+    left: 50%;
+    .transform(-50%);
   }
 }
-// 布局
-.layouts () {
-  // float布局
-  .floatBox {
-    &::after {
-      content: '.';
-      display: block;
-      height: 0;
-      clear: both;
-      visibility: hidden;
-    }
-    &>.left {
-      float: left;
-    }
-    &>.right {
-      float: right;
-    }
+// 偏移量
+.transform (@x: 0; @y: 0) {
+  transform: translate(@x, @y);
+  -o-transform: translate(@x, @y);
+  -moz-transform: translate(@x, @y);
+  -webkit-transform: translate(@x, @y);
+}
+// flex
+.flex(@justify: left; @align: center; @flexWrap: nowrap; @dir: row; @content: start) {
+  display: flex;
+  display: -webkit-flex;
+  
+  justify-content: @justify;
+  -webkit-justify-content: @justify;// edge
+  
+  align-items: @align;
+  -webkit-align-items: @align;
+  // The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+  flex-wrap: @flexWrap;
+  -ms-flex-wrap: @flexWrap;
+  -webkit-flex-wrap: @flexWrap; // safari
+  // 轴方向
+  flex-direction: @dir;
+  -ms-flex-direction: @dir;
+  -webkit-flex-direction: @dir;
+  // The CSS align-content property sets the distribution of space between and around content items along a flexbox's cross-axis or a grid's block axis.
+  align-content: @content;
+  -webkit-align-content: @content;
+}
+// Three values: flex-grow | flex-shrink | flex-basis
+.flexW(@n) {
+  flex: @n;
+  -ms-flex: @n;
+  -webkit-flex: @n;
+}
+// 动画名 动画设置
+.keyframes (@name; @options) {
+  @keyframes @name {
+    @options()
   }
-  // 固定
-  .fixedTop {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
+  @-o-keyframes @name {
+    @options()
   }
-  .fixedLeft {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
+  @-moz-keyframes @name {
+    @options()
   }
-  .fixedBottom {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-  }
-  .fixedRight {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-  }
-  .fixedCenter {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-  }
-  // flex
-  .flexBox {
-    display: flex;
-    display: -webkit-flex;
+  @-webkit-keyframes @name {
+    @options()
   }
 }
-.animationM (@name; @time: 3s) {
-  animation: @name @time linear infinite;
-  -o-animation: @name @time linear infinite;
-  -moz-animation: @name @time linear infinite;
-  -webkit-animation: @name @time linear infinite;
+// 动画 animation 是下面属性的一个简写属性形式。
+// animation-name， 动画名称
+// animation-duration, 动画时间
+// animation-direction， 动画是否反向播放 normal alternate（交替反向运动） reverse（反向运动） alternate-reverse（反向交替， 反向开始交替）
+// animation-delay， // 动画开始时间（延时）
+// animation-timing-function， 动画运动方式（缓冲还是匀速等）对于关键帧动画来说，timing function作用于一个关键帧周期而非整个动画周期，即从关键帧开始开始，到关键帧结束结束。 若该关键帧没有定义缓动函数，则使用定义于整个动画的缓动函数。
+// animation-iteration-count，// 动画
+// animation-fill-mode // 动画运行次数
+// animation-play-state // 动画状态 运行还是暂停
+.animate(@name; @dur: 3s; @dir: normal; @delay: 0; @timing: linear; @iteration: infinite; @fill: none){
+  animation-name: @name;
+  -o-animation-name: @name;
+  -moz-animation-name: @name;
+  -webkit-animation-name: @name;
+
+  animation-duration: @dur;
+  -o-animation-duration: @dur;
+  -moz-animation-duration: @dur;
+  -webkit-animation-duration: @dur;
+
+  animation-direction: @dir;
+  -o-animation-direction: @dir;
+  -moz-animation-direction: @dir;
+  -webkit-animation-direction: @dir;
+
+  animation-delay: @delay;
+  -o-animation-delay: @delay;
+  -moz-animation-delay: @delay;
+  -webkit-animation-delay: @delay;
+
+  animation-timing-function: @timing;
+  -o-animation-timing-function: @timing;
+  -moz-animation-timing-function: @timing;
+  -webkit-animation-timing-function: @timing;
+
+  animation-iteration-count: @iteration;
+  -o-animation-iteration-count: @iteration;
+  -moz-animation-iteration-count: @iteration;
+  -webkit-animation-iteration-count: @iteration;
+  animation-fill-mode: @fill;
+  -o-animation-fill-mode: @fill;
+  -webkit-animation-fill-mode: @fill;
+  // animation: @arguments;
+  // -o-animation: @arguments;
+  // -moz-animation:  @arguments;
+  // -webkit-animation:  @arguments;
+}
+// 动画状态默认停止
+.playState(@state: paused) {
+  animation-play-state: @state;
+  -o-animation-play-state: @state;
+  -moz-animation-play-state: @state;
+  -webkit-animation-play-state: @state;
 }

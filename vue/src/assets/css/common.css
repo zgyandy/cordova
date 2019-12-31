@@ -80,6 +80,10 @@ input::-webkit-input-placeholder {
 em {
   font-style: normal;
 }
+.layout {
+  width: 7.5rem;
+  margin: auto;
+}
 .grayColor {
   color: #999;
 }

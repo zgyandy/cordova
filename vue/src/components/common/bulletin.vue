@@ -1,5 +1,5 @@
 <template>
-  <dl class="bulletin" v-show="bulletin"  >
+  <dl class="bulletin" v-show="bulletin.length"  >
     <dt>海同快报</dt>
     <dd class="content">
         <swiper :options="swiperOption" class="swiper-no-swiping" v-if="bulletin.length">

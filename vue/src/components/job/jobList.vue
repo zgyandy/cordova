@@ -23,8 +23,7 @@
 <style scoped lang="less">
   .jobList {
     .dis-flex-bet {
-      .layouts.flexBox;
-      justify-content: space-between;
+      .flex(@justify: space-between);
     }
     .red-color {
       color: #e10030;

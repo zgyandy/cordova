@@ -23,7 +23,12 @@ export default new Router({
         {
           path: 'list/:subject/:difficulty/:sort',
           name: 'videoList',
-          component: resolve => require(['../page/video/videoList.vue'], resolve)
+          component: resolve => require(['../page/video/list.vue'], resolve)
+        },
+        {
+          path: 'play/:id',
+          name: 'videoPlay',
+          component: resolve => require(['../page/video/play.vue'], resolve)
         }
       ]
     },

@@ -32,7 +32,12 @@
           title: '精品视频',
           arr: [
             {
-              url: '/video/total/',
+              name: 'videoList',
+              params: {
+                subject: 0,
+                difficulty: 0,
+                sort: 0
+              },
               msg: '更多'
             }
           ],
@@ -43,7 +48,12 @@
           title: '人工智能',
           arr: [
             {
-              url: '/video/total-b1/',
+              name: 'videoList',
+              params: {
+                subject: 0,
+                difficulty: 1,
+                sort: 0
+              },
               msg: '更多'
             }
           ],
@@ -54,7 +64,12 @@
           title: '大数据',
           arr: [
             {
-              url: '/video/total-b3/',
+              name: 'videoList',
+              params: {
+                subject: 0,
+                difficulty: 3,
+                sort: 0
+              },
               msg: '更多'
             }
           ],
@@ -65,7 +80,12 @@
           title: 'Java全栈',
           arr: [
             {
-              url: '/video/total-b5/',
+              name: 'videoList',
+              params: {
+                subject: 0,
+                difficulty: 5,
+                sort: 0
+              },
               msg: '更多'
             }
           ],
@@ -76,7 +96,12 @@
           title: 'Web前端',
           arr: [
             {
-              url: '/video/total-b6/',
+              name: 'videoList',
+              params: {
+                subject: 0,
+                difficulty: 6,
+                sort: 0
+              },
               msg: '更多'
             }
           ],

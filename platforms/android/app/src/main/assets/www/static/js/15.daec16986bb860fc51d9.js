@@ -1,0 +1,1 @@
+webpackJsonp([15],{"3ZEb":function(e,t){},"mA+t":function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("\n  new page\n")])},staticRenderFns:[]};var a=n("VU/8")({},r,!1,function(e){n("3ZEb")},"data-v-29b7194b",null);t.default=a.exports}});

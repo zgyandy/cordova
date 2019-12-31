@@ -47,7 +47,7 @@ export default {
               }
             },
             {
-              url: 'videoList',
+              name: 'videoList',
               msg: '公开课',
               params: {
                 subject: 2,
@@ -64,7 +64,8 @@ export default {
   },
   methods: {
     toPlay (id) {
-      location.assign('/video/play-' + id + '.htm')
+      // location.assign('http://m.zhizuobiao.com/video/play-' + id + '.htm')
+      this.$router.push({name: 'videoPlay', params: {id: id}})
     }
   },
   components: {

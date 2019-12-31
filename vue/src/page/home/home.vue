@@ -22,7 +22,7 @@
     <mt-loadmore :bottomMethod="loadBottom" :bottomAllLoaded="allLoaded" ref="loadmore" bottomPullText="上拉加载" :maxDistance="maxDistance">
     <listTitle :listTitle="listTitle" ></listTitle>
     <Article ref="Article" :adPass="adPass" :articles="articles"></Article>
-    <loadMore :title="loadTitle"></loadMore>
+    <LoadMore :title="loadTitle"></LoadMore>
     </mt-loadmore>
   </div>
 </template>

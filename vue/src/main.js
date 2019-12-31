@@ -28,12 +28,12 @@ require('./assets/iconfont/iconfont.css')
 require ('./assets/css/common.css')
 require ('./config/rem.js')
 
-/* eslint-disable no-new */
-
 var app = {
   // Application Constructor
   initialize: function() {
-      document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    document.addEventListener("pause", this.pauseEnvent, false);
+    document.addEventListener("resume", this.resumeEvent, false);
   },
 
   // deviceready Event Handler
@@ -42,13 +42,30 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent('deviceready');
+    this.pauseEnvent('pause');
+    this.resumeEvent('resume');
+  },
+  receivedEvent: function(id) {    
+    // 设备准备完成
     Vue.prototype.getPicture = navigator.camera.getPicture
     Vue.prototype.testFn = fn
     function fn () {
       console.log('onDeviceReady')
     }
+    // new Vue({
+    //   el: '#app',
+    //   router,
+    //   components: { App },
+    //   template: '<App/>',
+    //   store,
+    // })
   },
-  receivedEvent: function(id) {
+  pauseEnvent: function () {
+    // 应用进入后台
+
+  },
+  resumeEvent: function () {
+    // 应用从后台恢复
 
   }
 };

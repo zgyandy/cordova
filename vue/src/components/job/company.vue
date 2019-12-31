@@ -67,15 +67,14 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
       width: 7.1rem;
       margin: 0.3rem auto 0;
       overflow: hidden;
-      .layouts.flexBox;
-      justify-content: space-between;
+      .flex(@justify: space-between);
       .swiper-slide {
         width: 2.3rem;
         height: 1.74rem;
         background-color: #ffffff;
         border: solid 1px #dadada;
         overflow: hidden;
-        .boxModel.borderBox;
+        .boxModel(border-box);
         a {
           width: 100%;
           height: 100%;
@@ -94,7 +93,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
         height: 0.8rem;
         width: 7.1 / 4rem;
         float: left;
-        .boxModel.borderBox;
+        .boxModel(border-box);
         text-align: center;
         line-height: 0.79rem;
         .full {

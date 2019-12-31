@@ -103,7 +103,7 @@ export default {
     }
     .courseList {
       height: 1.9rem;
-      .layouts.flexBox;
+      .flex();
       li {
         height: 1.9rem;
         flex: 1;

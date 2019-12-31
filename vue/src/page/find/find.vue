@@ -18,13 +18,13 @@
     <!-- 有结果 -->
     <div v-if="hasResult">
       <!-- 有活动 -->
-      <Activity :activityArr="activityArr" v-if="activityPage > 0"></Activity>
+      <!-- <Activity :activityArr="activityArr" v-if="activityPage > 0"></Activity> -->
       <!-- 点击查看更多活动 -->
-      <p class="loadBtn" v-if="activityPage > 1"><a href="/#/huodong/">查看更多活动</a></p>
+      <!-- <p class="loadBtn" v-if="activityPage > 1"><a href="/#/huodong/">查看更多活动</a></p> -->
       <!-- 有商品 -->
-      <goods :goodsArr="goodsArr" v-if="goodsPage > 0"></goods>
+      <!-- <goods :goodsArr="goodsArr" v-if="goodsPage > 0"></goods> -->
       <!-- 点击查看跟多商品 -->
-      <p class="loadBtn" v-if="goodsPage > 3"><a href="/#/mall/course/">查看更多商品</a></p>
+      <!-- <p class="loadBtn" v-if="goodsPage > 3"><a href="/#/mall/course/">查看更多商品</a></p> -->
       <!-- 搜索视频 -->
       <ListVideo :videoArr="videoArr" v-if="videoPage > 0" ></ListVideo>
       <!-- 点击加载 -->
@@ -34,9 +34,9 @@
       <!-- 点击加载 -->
       <p v-if="articlePage > 3" class="loadBtn"><router-link :to="{name: 'knowledge'}">查看更多资讯</router-link></p>
       <!-- 没有活动 -->
-      <Activity :activityArr="activityArr" v-if="activityPage == 0 && activityArr.length > 0" :activityBl="activityBl" :hasResult="hasResult"></Activity>
+      <!-- <Activity :activityArr="activityArr" v-if="activityPage == 0 && activityArr.length > 0" :activityBl="activityBl" :hasResult="hasResult"></Activity> -->
       <!-- 畅销商品 -->
-      <goods :goodsArr="goodsArr" v-if="goodsPage == 0" :goodsBl ="goodsBl"></goods>
+      <!-- <goods :goodsArr="goodsArr" v-if="goodsPage == 0" :goodsBl ="goodsBl"></goods> -->
       <!-- 热门视频 -->
       <videoList v-if="videoPage == 0" :videoArr="videoArr" :videoBl = "videoBl"></videoList>
       <!-- 精品文章 -->
@@ -46,8 +46,8 @@
     <div v-else>
       <!-- 你可能喜欢 -->
       <listTitle :listTitle="listTitle"></listTitle>
-      <Activity :activityArr="activityArr" :activityBl="activityBl" :hasResult="hasResult"></Activity>
-      <goods :goodsArr="goodsArr"></goods>
+      <!-- <Activity :activityArr="activityArr" :activityBl="activityBl" :hasResult="hasResult"></Activity> -->
+      <!-- <goods :goodsArr="goodsArr"></goods> -->
       <ListVideo :videoArr="videoArr"></ListVideo>
       <Article :articles='articleArr'></Article>
     </div>
@@ -65,10 +65,10 @@ import hotChannel from '../../components/hotChannel/hotChannel'
 import hotInfo from '../../components/hotInfo/hotInfo'
 import Article from '../../components/article/article'
 import videoList from '../../components/videoList/videoList'
-import goods from '../../components/goods/goods'
+// import goods from '../../components/goods/goods'
+// import Activity from "../../components/activity/activity"
 import listTitle from '../../components/common/listTitle'
 import ListVideo from '../../components/videoList/list'
-import Activity from "../../components/activity/activity"
 import { Toast } from 'mint-ui'
 export default {
   data () {
@@ -184,7 +184,7 @@ export default {
     this.$store.commit('footBl', true);
   },
   components: {
-      Activity, hotChannel, hotInfo, Article, videoList, goods, listTitle, ListVideo
+    hotChannel, hotInfo, Article, videoList, listTitle, ListVideo
   },
 }
 </script>

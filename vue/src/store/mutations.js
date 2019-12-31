@@ -26,6 +26,9 @@ export default {
   },
   classUrl: (state, payload) => {
     state.classUrl = payload
+  },
+  navState: (state, payload) => {
+    Object.keys(payload).forEach(key => state.navState[key] = payload[key])
   }
   // [types.AddTest]: (state) => {
   //   state.test++
